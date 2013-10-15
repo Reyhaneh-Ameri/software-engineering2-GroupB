@@ -17,7 +17,6 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="102dp"
         android:gravity="right"
-        android:text="صدا"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
@@ -29,7 +28,6 @@
         android:layout_below="@+id/switch1"
         android:layout_marginTop="15dp"
         android:gravity="right"
-        android:text="آهنگ"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
@@ -41,7 +39,6 @@
         android:layout_below="@+id/Switch01"
         android:layout_marginTop="14dp"
         android:gravity="right"
-        android:text="لرزش"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
@@ -54,5 +51,32 @@
         android:layout_marginTop="14dp"
         android:text="تنظیمات"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/switch1"
+        android:layout_toRightOf="@+id/switch1"
+        android:text="صدا"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Switch01"
+        android:layout_alignLeft="@+id/TextView01"
+        android:text="آهنگ"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Switch02"
+        android:layout_alignRight="@+id/TextView02"
+        android:text="لرزش"
+        android:textSize="18sp" />
 
 </RelativeLayout>
