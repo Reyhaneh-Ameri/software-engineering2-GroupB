@@ -1,0 +1,128 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="right"
+        android:text="افرادی که تا الان برای بازی ملحق شده اند  " />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+         android:layout_weight="30"
+         >
+
+        <LinearLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/TextView1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/TextView2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right"
+                android:text="نفر اول " />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/TextView2"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                
+                android:layout_gravity="left"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+    </ScrollView>
+<TextView
+        android:id="@+id/TextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="right"
+        android:text="تنظیمات بازی " 
+       
+        />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp" 
+         android:layout_weight="35">
+
+        <LinearLayout
+            android:id="@+id/RelativeLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            
+            android:orientation="vertical"
+             >
+           <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="right"
+        
+        android:text="کی برد درهم  " 
+       
+        />
+
+            <ToggleButton
+                android:id="@+id/ToggleButton1"
+                style="@style/AppBaseTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/TextView1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right" />
+            
+             <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="right"
+        android:text="خرید حرف " 
+       
+        />
+              <ToggleButton
+                android:id="@+id/ToggleButton2"
+                style="@style/AppBaseTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/TextView1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="right" />
+        </LinearLayout>
+    </ScrollView>
+
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="شروع بازی" 
+        android:layout_gravity="center"/>
+    
+
+   
+</LinearLayout>
