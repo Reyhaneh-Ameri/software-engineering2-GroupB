@@ -4,17 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
- 
+import android.widget.Switch;
+import android.widget.ToggleButton;
+
+
 public class Settings extends Activity {
      
-     
-    private static int RESULT_LOAD_IMAGE = 1;
+	int appSound=1;
+	int appVibra=1;
+	int appMusic=1;
+    MediaPlayer player;
+	private static int RESULT_LOAD_IMAGE = 1;
      
  
     @Override
@@ -22,6 +30,11 @@ public class Settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
          
+
+        player=MediaPlayer.create(this, R.raw.bground);
+        player.setLooping(true);
+        player.setVolume(100, 100);
+
         Button buttonLoadImage = (Button) findViewById(R.id.chooseAvatarButton);
         buttonLoadImage.setOnClickListener(new View.OnClickListener() {
              
@@ -35,7 +48,48 @@ public class Settings extends Activity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-    }
+        
+        ToggleButton toggleSound = (ToggleButton) findViewById(R.id.togSound);
+        toggleSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				if (appSound==1)
+					appSound=0;
+				else
+					appSound=1;				
+			}			
+		});
+    ToggleButton toggleVibra = (ToggleButton) findViewById(R.id.togVibra);
+    toggleVibra.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View arg0) {
+			if (appVibra==1)
+				appVibra=0;
+			else
+				appVibra=1;
+			
+		}
+	});
+    ToggleButton toggleMusic = (ToggleButton) findViewById(R.id.togMusic);
+    toggleMusic.setChecked(true);
+    toggleMusic.setOnClickListener(new View.OnClickListener() {
+		@Override
+		public void onClick(View arg0) {
+			if (appMusic==1){
+				appMusic=0;
+				setMusicOff();
+			}
+			else{
+				appMusic=1;
+				setMusicOn();
+			}
+			
+		}
+	});
+}
+
      
      
     @Override
@@ -60,5 +114,13 @@ public class Settings extends Activity {
         }
      
      
+    }
+    
+    public void setMusicOn(){
+    	player.start();
+    }
+    
+    public void setMusicOff(){
+    	player.stop();
     }
 }

@@ -13,8 +13,8 @@
         android:id="@+id/soundText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/switch1"
-        android:layout_toRightOf="@+id/switch1"
+        android:layout_alignBottom="@+id/togSound"
+        android:layout_toRightOf="@+id/togSound"
         android:text="صدا"
         android:textSize="20sp" />
 
@@ -22,8 +22,8 @@
         android:id="@+id/musicText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Switch01"
-        android:layout_toRightOf="@+id/Switch01"
+        android:layout_alignBottom="@+id/togMusic"
+        android:layout_toRightOf="@+id/togMusic"
         android:text="آهنگ"
         android:textSize="20sp" />
 
@@ -31,24 +31,24 @@
         android:id="@+id/vibrationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Switch02"
-        android:layout_toRightOf="@+id/Switch02"
+        android:layout_alignBottom="@+id/togVibra"
+        android:layout_toRightOf="@+id/togVibra"
         android:text="لرزش"
         android:textSize="20sp" />
 
-    <Switch
-        android:id="@+id/Switch01"
+    <ToggleButton
+        android:id="@+id/togMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Switch02"
-        android:layout_alignLeft="@+id/switch1"
+        android:layout_above="@+id/togVibra"
+        android:layout_alignLeft="@+id/togSound"
         android:layout_marginBottom="16dp"
         android:gravity="right"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
-    <Switch
-        android:id="@+id/Switch02"
+    <ToggleButton
+        android:id="@+id/togVibra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -58,8 +58,8 @@
         android:textOff="خاموش"
         android:textOn="روشن" />
 
-    <Switch
-        android:id="@+id/switch1"
+    <ToggleButton
+        android:id="@+id/togSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -72,7 +72,7 @@
         android:id="@+id/showAvatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/switch1"
+        android:layout_above="@+id/togSound"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="24dp"
@@ -87,5 +87,6 @@
         android:layout_marginBottom="18dp"
         android:gravity="right|fill_vertical"
         android:text="انتخاب عکس" />
+
     
 </RelativeLayout>
