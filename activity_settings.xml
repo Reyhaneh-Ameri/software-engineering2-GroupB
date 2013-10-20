@@ -10,40 +10,46 @@
     tools:context=".Settings" >
 
     <TextView
-        android:id="@+id/soundText"
+        android:id="@+id/vibrationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/togSound"
-        android:layout_toRightOf="@+id/togSound"
-        android:text="صدا"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:text="لرزش"
         android:textSize="20sp" />
-
+    
     <TextView
         android:id="@+id/musicText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/togMusic"
-        android:layout_toRightOf="@+id/togMusic"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/vibrationText"
+        android:layout_marginTop="20dp"
         android:text="آهنگ"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/vibrationText"
+        android:id="@+id/soundText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/togVibra"
-        android:layout_toRightOf="@+id/togVibra"
-        android:text="لرزش"
+		android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/musicText"
+        android:layout_marginTop="20dp"
+        android:text="صدا"
         android:textSize="20sp" />
 
     <ToggleButton
-        android:id="@+id/togMusic"
+        android:id="@+id/togSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/togVibra"
-        android:layout_alignLeft="@+id/togSound"
-        android:layout_marginBottom="16dp"
-        android:gravity="right"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/soundText"
+        android:gravity="center"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
@@ -51,42 +57,45 @@
         android:id="@+id/togVibra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
-        android:layout_toLeftOf="@+id/musicText"
-        android:gravity="right"
+		android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/vibrationText"
+        android:gravity="center"
         android:textOff="خاموش"
         android:textOn="روشن" />
 
     <ToggleButton
-        android:id="@+id/togSound"
+        android:id="@+id/togMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="right"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/musicText"
+        android:gravity="center"
         android:textOff="خاموش"
         android:textOn="روشن" />
+
+
+    <Button
+        android:id="@+id/bbb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="انتخاب عکس" />
 
     <ImageView
         android:id="@+id/showAvatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/togSound"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="24dp"
-        android:scaleType="fitXY" />
-
-    <Button
-        android:id="@+id/chooseAvatarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/showAvatar"
-        android:layout_alignRight="@+id/vibrationText"
-        android:layout_marginBottom="18dp"
-        android:gravity="right|fill_vertical"
-        android:text="انتخاب عکس" />
-
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/amiri" />
     
 </RelativeLayout>
