@@ -1,0 +1,251 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+    
+    
+        
+   
+  
+   <LinearLayout   
+				android:id="@+id/topofpage"
+				android:layout_height="0dp"
+		        android:layout_width="fill_parent"
+				android:layout_weight="12" 
+				android:orientation="horizontal"
+				  >
+		 
+		     <LinearLayout   
+				android:id="@+id/help_stop"
+				android:layout_height="fill_parent"
+		        android:layout_width="0dp"
+				android:layout_weight="8" 
+				android:orientation="horizontal"
+				  > 
+            <ImageView
+						android:id="@+id/helpicon"
+						android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+						android:clickable="true"
+                        android:layout_weight="2" 
+                        
+						android:src="@drawable/help" />
+				     
+                <TextView
+						android:id="@+id/Textview1"
+						android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+				         android:layout_weight="5" 
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:gravity="right"
+					    
+						android:text="اتمام بازی" />
+               <!--   android:background="#ff000000"-->
+               </LinearLayout>
+                <TextView
+						android:id="@+id/Textview2"
+						android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+				         android:layout_weight="5" 
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:gravity="right"
+					    
+						android:text="کم آوردم" />
+                <LinearLayout 
+               android:layout_height="fill_parent"
+	           android:layout_weight="5"
+               android:layout_width="0dp"
+             android:orientation="vertical"
+       >
+                <TextView
+						android:id="@+id/Textview3"
+						android:layout_height="0dp"
+		                android:layout_width="fill_parent"
+				         android:layout_weight="6" 
+						android:layout_alignParentRight="true"
+						android:gravity="right"
+						android:text="راند اول" />
+                <TextView
+						android:id="@+id/Textview3"
+						android:layout_height="0dp"
+		                android:layout_width="fill_parent"
+				         android:layout_weight="5" 
+						android:layout_alignParentRight="true"
+						android:gravity="right"
+						android:text="0"/>
+                
+                 <!-- ghermez : android:background="#ffff0000" -->
+             </LinearLayout>   
+                
+               
+        </LinearLayout>
+<FrameLayout
+		android:layout_height="0dp"
+		android:layout_width="fill_parent"
+		android:layout_weight="70" >
+   <ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			 > 
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		   
+		    	 >
+		    <TableLayout android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:background="#ffffff"
+                android:orientation="horizontal"
+                >
+                <TableRow android:background="#000000"
+                    android:layout_width="fill_parent" android:layout_height="fill_parent"
+                   >
+                    <TextView android:textColor="#000000" android:text="نوشته شده "
+                        android:background="#00CCFF"
+                         android:layout_weight="30"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+                    <TextView android:textColor="#000000" android:text="فیلد"
+                        android:background="#00CCFF" 
+                         android:layout_weight="10"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+        
+
+
+                </TableRow>
+ <TableRow 
+                    android:layout_width="fill_parent" android:layout_height="fill_parent"
+                   >
+                    <TextView android:textColor="#000000" android:text="غلام "
+                         android:layout_weight="30"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+                    <TextView android:textColor="#000000" android:text="اسم"
+                         android:layout_weight="10"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+        
+
+
+                </TableRow>
+            
+<TableRow 
+                    android:layout_width="fill_parent" android:layout_height="fill_parent"
+                   >
+                    <TextView android:textColor="#000000" android:text="غلامی "
+                         android:layout_weight="30"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+                    <TextView android:textColor="#000000" android:text="فامیل"
+                         android:layout_weight="10"
+                         android:layout_height="fill_parent"
+		                android:layout_width="0dp"
+                          android:textStyle="bold"
+                          android:gravity="right"/>
+        
+
+
+                </TableRow>
+            
+ 
+
+            </TableLayout>
+        </LinearLayout>
+       
+       
+    
+    </ScrollView>
+    
+   </FrameLayout>
+   <FrameLayout
+		android:layout_height="0dp"
+		android:layout_width="fill_parent"
+		android:layout_weight="80" >
+   <LinearLayout   
+				android:id="@+id/topofpage"
+				android:layout_height="fill_parent"
+		        android:layout_width="fill_parent"
+				android:orientation="horizontal"
+				  >
+   
+  
+   <com.example.keyboardtest01.Keyboard1
+       android:id="@+id/keyboard"
+       android:layout_width="0dp"
+       android:layout_height="fill_parent"
+       android:layout_weight="30"
+       android:layout_alignParentLeft="true"
+       android:layout_centerVertical="true"
+       android:layout_marginLeft="1dp"
+       android:background="@android:color/background_dark" />
+   
+   <LinearLayout 
+       android:layout_height="fill_parent"
+	   android:layout_weight="7"
+        android:layout_width="0dp"
+       android:orientation="vertical"
+       >
+   
+   <ImageView
+						android:id="@+id/backspace_icon"
+						android:layout_width="fill_parent"
+						android:layout_height="0dp"
+						android:layout_weight="5"
+						android:layout_alignParentLeft="true"
+					
+						android:src="@drawable/help" />
+ 
+   <Button
+		    android:id="@+id/space_botton"
+			android:layout_width="fill_parent"
+			android:layout_height="0dp"
+			android:layout_weight="5"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:text="فاصله" />
+   <Button
+		    android:id="@+id/kharidhorof"
+			android:layout_width="fill_parent"
+			android:layout_height="0dp"
+			android:layout_weight="5"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:text="خرید حروف" />
+   
+   </LinearLayout>
+    
+    </LinearLayout>
+    </FrameLayout>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   </LinearLayout>
