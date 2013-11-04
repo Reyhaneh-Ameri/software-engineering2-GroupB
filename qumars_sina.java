@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 
+//coded by Cna Piri and Qmars razmi
+ 
 public class MainActivity extends Activity {
 
 	
