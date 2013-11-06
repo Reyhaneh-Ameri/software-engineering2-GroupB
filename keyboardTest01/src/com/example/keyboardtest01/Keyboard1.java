@@ -18,10 +18,10 @@ public class Keyboard1 extends AbsoluteLayout{
 	MainActivity ma;
 	
 	public Keyboard1(Context context){
-	   super(context, null);
+		super(context, null);
 	}
 	public Keyboard1(Context context, AttributeSet attrs){
-	   super(context, attrs, 0);
+		super(context, attrs, 0);
 	}
 	public Keyboard1(Context context, AttributeSet attrs, int defaultStyle){
 		super(context, attrs, defaultStyle);
@@ -35,12 +35,20 @@ public class Keyboard1 extends AbsoluteLayout{
 			refreshKeyboard(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.getSize(heightMeasureSpec));
 	}
 	
+	public void setActivity(MainActivity ma) {
+		this.ma = ma;
+	}
+	
 	protected void refreshKeyboard(int h, int w) {
 		int offset = 80;
-		if(h*w < 80*80)
+		if(h*w < 32*80*80)
 			offset -= 20;
-		if(h*w < 60*60)
+		if(h*w < 32*60*60)
 			offset -= 20;
+		if(h*w < 32*40*40)
+			offset -= 10;
+
+		Log.d("asdasd", Integer.toString(offset));
 		
 		Random rand = new Random();
 		int random;
@@ -57,9 +65,9 @@ public class Keyboard1 extends AbsoluteLayout{
 		for(int i=0; i< 32; i++) {			
 			try {
 				random = rand.nextInt(tmpImages.size());
-				tmpAlphabetView = new AlphabetView(this.getContext(), tmpImages.remove(random),
-						tmpCharacters.remove(random), 10, 10);
-				tmpLayoutParams = new LayoutParams(offset, offset, 100,100);
+				tmpAlphabetView = new AlphabetView(this.getContext(), tmpImages.remove(0),
+						tmpCharacters.remove(0), 10, 10);
+				tmpLayoutParams = new LayoutParams(offset, offset, (i%(w/offset))*offset, (i/(w/offset))*offset);
 				tmpAlphabetView.setOnClickListener(new alphabetListener());
 				
 				this.addView(tmpAlphabetView, tmpLayoutParams);
@@ -72,7 +80,8 @@ public class Keyboard1 extends AbsoluteLayout{
 	class alphabetListener implements OnClickListener {
 		@Override
 		public void onClick(View arg0) {
-			ma.printChar(((AlphabetView)arg0).getCharacter());
+//			Log.d("ter ter", ""+(((AlphabetView)arg0).getCharacter()));
+			ma.insertCharacter(((AlphabetView)arg0).getCharacter());
 		}
 	}
 }

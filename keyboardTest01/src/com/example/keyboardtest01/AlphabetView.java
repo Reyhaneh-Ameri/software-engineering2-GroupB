@@ -3,6 +3,7 @@ package com.example.keyboardtest01;
 import com.example.keyboardtest01.R;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.AbsoluteLayout.LayoutParams;
 
