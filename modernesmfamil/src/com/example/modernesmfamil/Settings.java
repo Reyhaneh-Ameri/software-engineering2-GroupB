@@ -5,7 +5,13 @@
  */
 package com.example.esmfamil;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 import android.app.Activity;
+import android.database.Cursor;
 import com.example.esmfamil.SoundHandler;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +24,7 @@ import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewDebug.IntToString;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -30,16 +37,15 @@ import com.example.esmfamil.DatabaseHelper;
  * @author Amin Fallahi, Mahsa Asadi
  */
 public class Settings extends Activity {
-	int appSound=1;
-	int appVibra=1;
+
 
 	MusicHandler bgMusic;
 	SoundHandler sound;
 	protected DatabaseHelper db;
-	public void pplayWin(){
+	/*	public void pplayWin(){
 		sound=new SoundHandler();
 		sound.playWin(this);
-	}
+	}*/
 	private static int RESULT_LOAD_IMAGE = 1;
 	/**
 	 * onCreate is overloaded for all the functions that are done after
@@ -51,21 +57,34 @@ public class Settings extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-
+		//int a=SettingsHandler.getSoundStatus();
+		//Log.d("ssss",IntToString(a));
 		bgMusic=new MusicHandler(this);
 		bgMusic.setMusicOn();
 		sound=new SoundHandler();
-		
+
+
+		db=new DatabaseHelper();
+		db.open(this);
+		//db.insertRecord(1,"Mahsa");
+		Log.d("ssss","Mahsa >:P");
+
+		Log.d("ssss","android.resource://" + getPackageName() + "/"+R.raw.boynames);
 
 		
-		db=new DatabaseHelper();
-		Log.d("ssss","ghable open");
-		db.open(this);
-		Log.d("ssss","bade open");
-		db.insertRecord(1,"Mahsa");
+		Scanner s = new Scanner(getResources().openRawResource(R.raw.fruitdb));
+	    while (s.hasNext()) {
+	        String word = s.next();
+	        Log.d("ssss",word);
+	        db.insertRecord(DatabaseHelper.fruitInt, word);
+	    }
+
 		
-		VibrationHandler.longVibra(this);
 		
+		//SettingsHandler.init(db);
+		//Log.d("ssss",IntToString(SettingsHandler.getSoundStatus()));
+		//VibrationHandler.longVibra(this);
+
 		Button buttonLoadImage = (Button)findViewById(R.id.bbb);
 		buttonLoadImage.setOnClickListener(new View.OnClickListener() {
 			/**
@@ -83,35 +102,29 @@ public class Settings extends Activity {
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
 		});
-		
-		
-		
-		
-		
-//		buttonLoadImage.setText();
-		//buttonLoadImage.setText(db.getAllItems().getString(db.getAllItems().getColumnIndex(db.colFnameVal)));
-		//Log.d("ssss",getString(db.getAllItems().getColumnIndex(DatabaseHelper.colFnameVal)));
-		Log.d("ssss","1");
-		int a=db.getAllItems().getColumnIndex(DatabaseHelper.colFnameVal);
-		Log.d("ssss","2");
-		Log.d("ssss",getString(a));
+
+
+
+
+
 /*		Log.d("ssss","1");
-		String qu="select * from "+DatabaseHelper.fnameTable;
-		Log.d("ssss","2");
 		Cursor c=db.getAllItems();
-		Log.d("ssss","3");
-		int iii=c.getColumnIndex(DatabaseHelper.colFnameVal);
-		Log.d("ssss","4");
-		String sag=c.getString(iii);
-		Log.d("ssss","5");*/
+		Log.d("ssss","2");
+		if (c.moveToLast())
+			Log.d("ssss","3");
+			Log.d("ssss",c.getString(0));
+			Log.d("ssss","4");
+	*/
 		
-		
-		
-		
-		
-		
+
+
+
+
 		ToggleButton toggleSound = (ToggleButton) findViewById(R.id.togSound);
-		toggleSound.setChecked(true);
+		if (SettingsHandler.getSoundStatus()==1)
+			toggleSound.setChecked(true);
+		else
+			toggleSound.setChecked(false);			
 		toggleSound.setOnClickListener(new View.OnClickListener() {
 			/**
 			 * when toggleButton is clicked we change the status of the 
@@ -120,19 +133,22 @@ public class Settings extends Activity {
 			 */
 			@Override
 			public void onClick(View arg0) {
-				if (SoundHandler.appSound==1){
-					pplayWin();
+				if (SettingsHandler.getSoundStatus()==1){
+					//pplayWin();
 				}
 				else{
-
+					SettingsHandler.setSoundStatus(1);			
 				}
 
 			}
 		});
 
-		
+
 		ToggleButton toggleMusic = (ToggleButton) findViewById(R.id.togMusic);
-		toggleMusic.setChecked(true);
+		if (SettingsHandler.getMusicStatus()==1)
+			toggleMusic.setChecked(true);
+		else
+			toggleMusic.setChecked(false);			
 		toggleMusic.setOnClickListener(new View.OnClickListener() {
 			/**
 			 * when toggleButton is clicked we change the status of the 
@@ -141,12 +157,12 @@ public class Settings extends Activity {
 			 */
 			@Override
 			public void onClick(View arg0) {
-				if (MusicHandler.appMusic==1){
-					MusicHandler.appMusic=0;
+				if (SettingsHandler.getMusicStatus()==1){
+					SettingsHandler.setMusicStatus(0);
 					bgMusic.setMusicOff();
 				}
 				else{
-					MusicHandler.appMusic=1;
+					SettingsHandler.setMusicStatus(1);
 					bgMusic.setMusicOn();
 				}
 
@@ -154,6 +170,8 @@ public class Settings extends Activity {
 		});
 
 	}
+
+
 
 
 	/**
@@ -194,7 +212,7 @@ public class Settings extends Activity {
 	 */
 	@Override
 	protected void onDestroy() {
-		SettingsHandler.writeFiles();
+		//		SettingsHandler.writeFiles();
 		super.onDestroy();
 	}
 }
