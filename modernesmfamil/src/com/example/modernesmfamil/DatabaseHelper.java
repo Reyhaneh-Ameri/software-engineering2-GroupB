@@ -59,7 +59,7 @@ public class DatabaseHelper{
 	}
 
 	public Cursor getAllItems() {
-		return sd.rawQuery("select * from " + fnameTable, null);
+		return sd.rawQuery("select * from " + colorTable, null);
 	}
 	
 	public int[] getSettingsValues(){
@@ -76,7 +76,7 @@ public class DatabaseHelper{
 		return gsv;
 	}
 	public void setSettingsValues(int v, int m, int s){
-		sd.rawQuery("truncate table "+settingsTable,null);
+		sd.delete(settingsTable, null, null);
 		sd.rawQuery("insert into "+settingsTable+" ("+v+")",null);
 		sd.rawQuery("insert into "+settingsTable+" ("+m+")",null);
 		sd.rawQuery("insert into "+settingsTable+" ("+s+")",null);
@@ -138,7 +138,13 @@ public class DatabaseHelper{
 			return false;
 		}
 	}
-
+	public void initSettingsTable(){
+		ContentValues cv=new ContentValues();
+		cv.put("val", "1");
+		sd.insert(settingsTable, null, cv);
+		sd.insert(settingsTable, null, cv);
+		sd.insert(settingsTable, null, cv);		
+	}
 	public void insertRecord(int recType, String recValue){
 		ContentValues cv=new ContentValues();
 		cv.put("val", recValue);
