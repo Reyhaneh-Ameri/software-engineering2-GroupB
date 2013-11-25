@@ -1,3 +1,8 @@
+/**
+ * @author Mahsa Asadi, Amin Fallahi
+ * This is the file to handle all the things with database, including
+ * open, connect, insert and read data from database
+ */
 package com.example.esmfamil;
 
 import java.util.StringTokenizer;
@@ -14,7 +19,7 @@ import android.util.Log;
 import android.view.ViewDebug.IntToString;
 
 public class DatabaseHelper{
-	public static final int dbversion = 14;
+	public static final int dbversion = 16;
 	public static final String dbname = "esmfamil";
 //	public static final String[] colInt={"",""};
 
@@ -51,17 +56,33 @@ public class DatabaseHelper{
 
 	private SqliteHelper sh;
 	private SQLiteDatabase sd;
-	
+/**
+ * @author Mahsa Asadi, Amin Fallahi
+ * Opens database for sending queries and working with, a context parameter
+ * is passed to say what activity is opening the database.	
+ * @param context
+ * @return
+ */
 	public DatabaseHelper open(Context context) {
 		sh = new SqliteHelper(context, dbname, null, dbversion);
 		sd = sh.getWritableDatabase();
 		return this;
 	}
-
+/**
+ * @author Mahsa Asadi, Amin Fallahi
+ * Select everything from a specified database, this is a test query
+ * function and is not functional in the main program.
+ * @return
+ */
 	public Cursor getAllItems() {
 		return sd.rawQuery("select * from " + colorTable, null);
 	}
-	
+	/**
+	 * @author Mahsa Asadi, Amin Fallahi
+	 * Get vibra, music and sound status from settings table in order to
+	 * toggle them on and off in settings activity.
+	 * @return
+	 */
 	public int[] getSettingsValues(){
 		Cursor c;
 		int[] gsv=new int[3];
@@ -73,15 +94,41 @@ public class DatabaseHelper{
 		gsv[1]=c.getInt(0);
 		c.moveToNext();
 		gsv[2]=c.getInt(0);
+		c.moveToNext();
+		gsv[3]=c.getInt(0);
 		return gsv;
 	}
-	public void setSettingsValues(int v, int m, int s){
+	/**
+	 * @author Mahsa Asadi, Amin Fallahi
+	 * This sets the value for vibra, music and sound and saves them in
+	 * settings table when the toggle button is tapped.
+	 * @param v
+	 * @param m
+	 * @param s
+	 */
+	public void setSettingsValues(int v, int m, int s, int d){
 		sd.delete(settingsTable, null, null);
-		sd.rawQuery("insert into "+settingsTable+" ("+v+")",null);
-		sd.rawQuery("insert into "+settingsTable+" ("+m+")",null);
-		sd.rawQuery("insert into "+settingsTable+" ("+s+")",null);
+		ContentValues cv=new ContentValues();
+		cv.put("val", v);
+		sd.insert(settingsTable, null, cv);
+		cv.clear();
+		cv.put("val", m);
+		sd.insert(settingsTable, null, cv);
+		cv.clear();
+		cv.put("val", s);
+		sd.insert(settingsTable, null, cv);	
+		cv.clear();
+		cv.put("val", d);
+		sd.insert(settingsTable, null, cv);	
 	}
-	
+	/**
+	 * @author Mahsa Asadi, Amin Fallahi
+	 * Gets a specific table and an string and checks if the string
+	 * is in the table or not.
+	 * @param fieldInt
+	 * @param inVal
+	 * @return
+	 */
 	public boolean isItThere(int fieldInt, String inVal){
 		Cursor c;
 		switch (fieldInt) {
@@ -138,6 +185,11 @@ public class DatabaseHelper{
 			return false;
 		}
 	}
+	/**
+	 * @author Mahsa Asadi, Amin Fallahi
+	 * Initializes the settings table by inserting vibra, music and sound
+	 * values as 1, meaning ON, to the database.
+	 */
 	public void initSettingsTable(){
 		ContentValues cv=new ContentValues();
 		cv.put("val", "1");
@@ -145,6 +197,13 @@ public class DatabaseHelper{
 		sd.insert(settingsTable, null, cv);
 		sd.insert(settingsTable, null, cv);		
 	}
+	/**
+	 * @author Mahsa Asadi, Amin Fallahi
+	 * Inserts a given string in the given table, used for inserting 
+	 * data in tables which are used in the game.
+	 * @param recType
+	 * @param recValue
+	 */
 	public void insertRecord(int recType, String recValue){
 		ContentValues cv=new ContentValues();
 		cv.put("val", recValue);
@@ -179,7 +238,10 @@ public class DatabaseHelper{
 		public SqliteHelper(Context context, String name, CursorFactory factory,int version) {
 			super(context, name, factory, version);
 		}
-
+/**
+ * @author Mahsa Asadi, Amin Fallahi
+ * Creates all the tables when the program is launched for the first time.
+ */
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE " + fnameTable + "( " 
@@ -196,11 +258,15 @@ public class DatabaseHelper{
 					+ colCityVal + " VARCHAR (30)) ");
 			db.execSQL("CREATE TABLE " + settingsTable + "( " 
 					+ colSettingsVal + " INT )");
-			db.execSQL("insert into "+settingsTable+" values(1)");
-			db.execSQL("insert into "+settingsTable+" values(1)");
-			db.execSQL("insert into "+settingsTable+" values(1)");
+			//db.execSQL("insert into "+settingsTable+" values(1)");
+			//db.execSQL("insert into "+settingsTable+" values(1)");
+			//db.execSQL("insert into "+settingsTable+" values(1)");
 		}
-
+/**
+ * @author Mahsa Asadi, Amin Fallahi
+ * Upgrades the database by removing all the existing tables and
+ * recreating them by calling OnCreate function.
+ */
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
 			db.execSQL("DROP TABLE " + fnameTable); 
@@ -209,7 +275,7 @@ public class DatabaseHelper{
 			db.execSQL("DROP TABLE " + flowerTable); 
 			db.execSQL("DROP TABLE " + colorTable); 
 			db.execSQL("DROP TABLE " + cityTable);
-			db.execSQL("DROP TABLE " + settingsTable);
+			//db.execSQL("DROP TABLE " + settingsTable);
 			onCreate(db);
 		}
 	}

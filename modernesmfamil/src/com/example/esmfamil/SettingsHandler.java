@@ -12,11 +12,12 @@ public class SettingsHandler {
 	private static int appSound=1;
 	private static int appVibra=1;
 	private static int appMusic=1;
+	private static int dbsaved=1;
 	private static ImageView avatarImg;
-	//private static DatabaseHelper db;
+//	private static DatabaseHelper db;
 	
 	/**
-	 * Constructor reads settings from files using FileHandler class 
+	 * Constructor reads settings from database using DatabaseHelper class 
 	 * and sets private variables.
 	 * @author Amin Fallahi, Mahsa Asadi
 	 */
@@ -28,6 +29,7 @@ public class SettingsHandler {
 		appVibra=gsv[0];
 		appMusic=gsv[1];
 		appSound=gsv[2];
+		dbsaved=gsv[3];
 		Log.d("ssss",Integer.toString(appVibra));
 	}
 	/**
@@ -78,7 +80,6 @@ public class SettingsHandler {
 	 */
 	public static void setMusicStatus(int s){
 		appMusic=s;
-		//db.setSettingsValues(appVibra, appMusic, appSound);
 	}
 	/**
 	 * sets the status of the current sound settings
@@ -88,5 +89,13 @@ public class SettingsHandler {
 	public static void setSoundStatus(int s){
 		appSound=s;		
 	}
-
+	
+	public static void saveSettings(DatabaseHelper db){
+		db.setSettingsValues(appVibra, appMusic, appSound, dbsaved);		
+	}
+	
+	public static int getDbSaveStatus(){
+		return dbsaved;
+	}
+	
 }
