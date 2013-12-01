@@ -38,7 +38,6 @@ import com.example.esmfamil.DatabaseHelper;
  */
 public class Settings extends Activity {
 
-
 	MusicHandler bgMusic;
 	SoundHandler sound;
 	protected DatabaseHelper db;
@@ -60,28 +59,27 @@ public class Settings extends Activity {
 		//int a=SettingsHandler.getSoundStatus();
 		//Log.d("ssss",IntToString(a));
 		bgMusic=new MusicHandler(this);
-		bgMusic.setMusicOn();
 		sound=new SoundHandler();
 
 
 		db=new DatabaseHelper();
 		db.open(this);
+		SettingsHandler.init(db);
+		if (SettingsHandler.getMusicStatus()==1)
+			bgMusic.setMusicOn();
 		//db.insertRecord(1,"Mahsa");
-		Log.d("ssss","Mahsa >:P");
 
-		Log.d("ssss","android.resource://" + getPackageName() + "/"+R.raw.boynames);
-
-		
+/*
 		Scanner s = new Scanner(getResources().openRawResource(R.raw.fruitdb));
 	    while (s.hasNext()) {
 	        String word = s.next();
 	        Log.d("ssss",word);
 	        db.insertRecord(DatabaseHelper.fruitInt, word);
 	    }
-
+*/
 		
-		
-		//SettingsHandler.init(db);
+		//db.setSettingsValues(1, 1, 1);
+		//db.setSettingsValues(1, 1, 1);
 		//Log.d("ssss",IntToString(SettingsHandler.getSoundStatus()));
 		//VibrationHandler.longVibra(this);
 
@@ -134,16 +132,41 @@ public class Settings extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				if (SettingsHandler.getSoundStatus()==1){
-					//pplayWin();
+					SettingsHandler.setSoundStatus(0);
+					SettingsHandler.saveSettings(db);
 				}
 				else{
-					SettingsHandler.setSoundStatus(1);			
+					SettingsHandler.setSoundStatus(1);
+					SettingsHandler.saveSettings(db);
 				}
-
 			}
 		});
 
+		ToggleButton toggleVibra = (ToggleButton) findViewById(R.id.togVibra);
+		if (SettingsHandler.getVibraStatus()==1)
+			toggleVibra.setChecked(true);
+		else
+			toggleVibra.setChecked(false);			
+			toggleVibra.setOnClickListener(new View.OnClickListener() {
+			/**
+			 * when toggleButton is clicked we change the status of the 
+			 * application Music by changing appMusic variable.
+			 * @author Amin Fallahi, Mahsa Asadi
+			 */
+			@Override
+			public void onClick(View arg0) {
+				if (SettingsHandler.getVibraStatus()==1){
+					SettingsHandler.setVibraStatus(0);
+					SettingsHandler.saveSettings(db);
+				}
+				else{
+					SettingsHandler.setVibraStatus(1);
+					SettingsHandler.saveSettings(db);
+				}
+			}
+		});
 
+		
 		ToggleButton toggleMusic = (ToggleButton) findViewById(R.id.togMusic);
 		if (SettingsHandler.getMusicStatus()==1)
 			toggleMusic.setChecked(true);
@@ -159,10 +182,12 @@ public class Settings extends Activity {
 			public void onClick(View arg0) {
 				if (SettingsHandler.getMusicStatus()==1){
 					SettingsHandler.setMusicStatus(0);
+					SettingsHandler.saveSettings(db);
 					bgMusic.setMusicOff();
 				}
 				else{
 					SettingsHandler.setMusicStatus(1);
+					SettingsHandler.saveSettings(db);
 					bgMusic.setMusicOn();
 				}
 
