@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
+import android.R.integer;
 import android.app.Activity;
 import android.provider.ContactsContract.CommonDataKinds.Nickname;
 import android.util.Log;
@@ -37,19 +38,34 @@ public class GameController {
 	char firstChar;
 	int state = STATE_INIT;
 	HashMap<String,ArrayList<String>> allFields=new HashMap<String, ArrayList<String>>();
+	String[] fields;
 	ArrayList<Player> players = new ArrayList<Player>();
 	HashMap<Integer, Integer> modes = new HashMap<Integer, Integer>();
-	HashMap<String, ArrayList<String>> playerFields = new HashMap<String, ArrayList<String>>();
-	ArrayList<String> fields;
+	//HashMap<String, ArrayList<String>> playerFields = new HashMap<String, ArrayList<String>>();
+	//ArrayList<String> fields;
 
 	
 	
-	public GameController(String nickname) {
-		int tmpID = this.addPlayer();
-		players.get(0).setNickname(nickname);
+	public GameController() {
+		
 		
 		GameController.gc = this;
 	}
+	
+	public void setFieldsName(String[] fieldsName) {
+		fields=new String[fieldsName.length];
+		this.fields=fieldsName;
+		
+	}
+	public String[] getFields(){
+		return fields;
+	}
+	/*public void playerFieldsUpdate(String playerName,ArrayList<String> fields) {
+		this.playerFields.put(playerName, fields);
+		
+	}*/
+	
+	
 	
 	public Player getPlayer(int ID) {
 		for (Player p : players)
@@ -86,18 +102,20 @@ public class GameController {
 		this.modes=modes;
 		
 	}
-	public void setFLChars (char lastChar,char firstChar) {
+	
+	public void setFLChars (Character lastChar,Character firstChar) {
 		this.firstChar=firstChar;
 		this.lastChar=lastChar;
 	}
+	
 	public void startGame() {
 		
 			//state = STATE_MAINGAME;
 			
-
+			if(this.round>0){
 	    	ServerNetworkController.snc.stopGettingConnection();
 	    	ServerNetworkController.snc.sendStartRoundMSG(modes, this.round);
-	    
+			}
 			
 	
 		
@@ -127,46 +145,91 @@ public class GameController {
 		return ret;
 	}
 	
-	public ArrayList<String> wordsNotInsideOfDB(HashMap<String, ArrayList<String>> playerFields) {
-		ArrayList<String> newWords=new ArrayList<String>();
+	public HashMap<String, ArrayList<String>> usersNewWords(HashMap<String, ArrayList<String>> playerFields) {
+		HashMap<String,ArrayList<String>> newWords=new HashMap<String, ArrayList<String>>();
 		Set<String> Names=playerFields.keySet();
 		String[] names=Names.toArray(new String[Names.size()]);
+		int n=playerFields.get(players.get(0).nickname).size();
+		
+		
+		
+		for(int k=0;k<n;k++){
+			newWords.put(fields[k],new ArrayList<String>());
+		}
+		
 		for (int j=0; j<Names.size(); j++){
-			String name=names[j];
-			ArrayList<String> s=playerFields.get(name);
+			ArrayList<String> s=playerFields.get(names[j]);
 			
 			
-			//check if first letter is correct
+			
+			ArrayList<String> fieldNewWords=new ArrayList<String>();
 			for (int i=0; i<s.size(); i++){
 				String f=s.get(i);
+				if (f.startsWith(firstChar+"") && f.endsWith(lastChar+"")){
 				
 				//check if shit is in db
-				if (!DatabaseController.dbc.isItThere(i+1, f)){
-					newWords.add(f);
+				int DBNum=0;
+				switch(fields[i]){
+					case "fname": DBNum=1;
+					case "lname" : DBNum=2;
+					case "fruit": DBNum=3;
+					case "flower": DBNum=4;
+					case "color": DBNum=5;
+					case "city": DBNum=6;
+					case "country": DBNum=7;
 				}
+						
+						
+				
+				
+				 if(!DatabaseController.dbc.isItThere(DBNum, f)){
+					
+					newWords.get(i).add(f);
+					
 				}
+				
+				}
+			
+		}
 		}
 		return newWords;
 		
 		
 	}
-	HashMap <String, ArrayList<int[]>> calculateScores(HashMap<String, ArrayList<String>> playerFields,HashMap<String, ArrayList<String>> helperWords){
+	
+	public void calculateScores(HashMap<Integer, ArrayList<String>> helperWords,String finisher){
 		
-		HashMap<String, ArrayList<int[]>> scores=new HashMap<String, ArrayList<int[]>>();
-		Set<String> Names=playerFields.keySet();
+		//HashMap<Player,Integer> scores=new HashMap<Player,Integer>();
+		Set<String> Names=allFields.keySet();
 		String[] names=Names.toArray(new String[Names.size()]);
+		
 		for (int j=0; j<Names.size(); j++){
 			String name=names[j];
-			ArrayList<String> s=playerFields.get(name);
-			int[] score;
-			score=new int[s.size()];
+			ArrayList<String> s=allFields.get(name);
+			int[] score=new int[s.size()];
+			Player player=players.get(j);
+			
 			//check if first letter is correct
 			for (int i=0; i<s.size(); i++){
 				String f=s.get(i);
-				if (!f.startsWith(firstChar+"")|| !f.endsWith(lastChar+""))
+				if (!f.startsWith(firstChar+"")|| !f.endsWith(lastChar+"")){
 					score[i]=0;
+					continue;
+				}
 				//check if shit is in db
-				else if (DatabaseController.dbc.isItThere(i+1, f)){
+				int DBNum=0;
+				switch(fields[i]){
+					case "fname": DBNum=1;
+					case "lname" : DBNum=2;
+					case "fruit": DBNum=3;
+					case "flower": DBNum=4;
+					case "color": DBNum=5;
+					case "city": DBNum=6;
+					case "country": DBNum=7;
+				}
+						
+					
+				if (DatabaseController.dbc.isItThere(DBNum, f)){
 					score[i]=20;
 					//check if anyone has written the same shit
 					int dupes=0;
@@ -174,8 +237,8 @@ public class GameController {
 						if (k==j)
 							continue;
 						String nameo=names[k];
-						ArrayList<String> so=playerFields.get(name);
-						String fo=s.get(i);
+						ArrayList<String> so=allFields.get(nameo);
+						String fo=so.get(i);
 						if (f==fo)
 							dupes++;
 					}
@@ -192,10 +255,20 @@ public class GameController {
 					}
 				}
 			}
-			ArrayList<int[]> t=new ArrayList<int[]>(Arrays.asList(score));
-			scores.put(name, t);
+			int playerScore=player.getScore();
+			
+			for(int h=0;h<s.size();h++){
+				playerScore+=score[h];
+			}
+			player.setScore(playerScore);
+			players.set(j,player);
+			
+			
+			/*ArrayList<int[]> t=new ArrayList<int[]>(Arrays.asList(score));
+			
+			scores.put(name, t);*/
 		}
-		return scores;
+		
 	}
 		
 	
