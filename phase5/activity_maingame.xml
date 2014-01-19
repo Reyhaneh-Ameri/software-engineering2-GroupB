@@ -1,0 +1,340 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/b9" >
+    
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="30" 
+        android:orientation="horizontal" >
+        
+        <LinearLayout
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="8" 
+            android:orientation="horizontal" >
+            <ImageView
+                android:id="@+id/helpicon"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:clickable="true"
+                android:layout_weight="2"
+                android:src="@drawable/help" />
+        </LinearLayout>
+        
+        <Button
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:clickable="true"
+            android:layout_weight="5"
+            android:text="کم آوردم"
+            android:textStyle="bold"
+            android:onClick="acceptLost"
+            android:textSize="18dp"
+            android:background="@drawable/o2" />
+        
+        <View
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:background="#0000FF" />
+        
+        <Button
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:clickable="true"
+            android:layout_weight="5"
+            android:textStyle="bold"
+            android:text="اتمام بازی "
+            android:onClick="endGameRequest"
+            android:background="@drawable/o"
+            android:textSize="18sp" />
+        
+        <LinearLayout
+            android:layout_height="fill_parent"
+            android:layout_weight="9"
+            android:layout_width="0dp"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/gameRound"
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="6"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="راند اول"
+                android:textSize="10sp"
+                android:textColor="#0000FF" />
+            <TextView
+                android:id="@+id/gameStartChar"
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="6"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text=" حرف شروع "
+                android:textSize="10sp"
+                android:textColor="#0000FF" />
+            <TextView
+                android:id="@+id/gameFinishChar"
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="6"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="حرف پایان  "
+                android:textSize="10sp"
+                android:textColor="#0000FF" />
+            <TextView
+                android:id="@+id/gamePoints"
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="5"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="0"
+                android:textSize="10sp"
+                android:textColor="#0000FF" />
+            </LinearLayout>
+        <!-- ghermez : android:background="#ffff0000" -->
+             </LinearLayout>
+     <!--       <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/table"
+                android:orientation="vertical"
+                android:layout_gravity ="center"
+                android:layout_alignParentRight="true"
+                android:gravity="right" >
+            </TableLayout>
+             --> 
+ <!--     <LinearLayout
+        android:id="@+id/table"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="80"
+        android:orientation="vertical" >
+        
+        <LinearLayout
+            android:layout_width="fill_parent" android:layout_height="0dp"
+            android:layout_weight="30"
+            android:orientation="horizontal" >
+             <TextView
+                android:text="گل"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:padding="15dp"
+                android:textColor="#0000FF"
+                android:textSize="20sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF"
+                android:textSize="18sp" />
+            <TextView
+                android:text="میوه"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:padding="15dp"
+                android:textColor="#0000FF"
+                android:textSize="20sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF"
+                android:textSize="18dp" />
+            
+            <TextView
+                android:text="رنگ"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:padding="15dp"
+                android:textColor="#0000FF"
+                android:textSize="20sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF" />
+            
+            <TextView
+                android:text="اسم"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:gravity="right"
+                android:padding="15dp"
+                android:textColor="#0000FF"
+                android:textSize="20sp" />
+        </LinearLayout>
+        
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="#ffff0000"/>
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"
+            android:orientation="horizontal" >
+            <TextView
+                android:textColor="#000000"
+                
+                android:id="@+id/gol"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                
+                android:gravity="right"
+                android:padding="15dp"
+                android:textSize="15sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF" />
+            <TextView
+                android:textColor="#000000"
+              
+                android:id="@+id/mive"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                
+                android:gravity="right"
+                android:padding="15dp"
+                android:textSize="15sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF" />
+            
+            <TextView
+                android:textColor="#000000"
+               
+                android:id="@+id/rang"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                
+                android:gravity="right"
+                android:padding="15dp"
+                android:textSize="15sp" />
+            
+            <View
+                android:layout_width="3dp"
+                android:layout_height="fill_parent"
+                android:background="#0000FF" />
+            
+            <TextView
+                android:textColor="#000000"
+               
+                android:id="@+id/esm"
+                android:layout_weight="30"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                
+                android:gravity="right"
+                android:padding="15dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>   -->
+   <LinearLayout
+        android:id="@+id/table"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="80"
+        android:orientation="vertical" >
+    <HorizontalScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			 > 
+    <LinearLayout 
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+         >
+
+</LinearLayout>
+</HorizontalScrollView>
+     </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="16"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/back_icon"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:onClick="clearText"
+            android:text="بازگشت"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/g1" />
+        <View
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:background="#0000FF" />
+        <Button
+            android:id="@+id/space_botton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="فاصله"
+            android:textStyle="bold"
+            android:background="@drawable/g2"
+            android:textSize="18sp" />
+        <View
+            android:layout_width="3dp"
+            android:layout_height="fill_parent"
+            android:background="#0000FF" />
+        <Button
+            android:id="@+id/kharidhorof"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="خرید حروف"
+            android:textStyle="bold"
+            android:onClick="buyCharacter"
+            android:background="@drawable/g5"
+            android:textSize="18sp" />
+    </LinearLayout >
+    <FrameLayout
+        android:id="@+id/keyboardLay"
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="140" >
+    </FrameLayout>
+</LinearLayout>
