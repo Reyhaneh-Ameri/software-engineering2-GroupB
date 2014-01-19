@@ -180,7 +180,7 @@ public class MainActivity extends FragmentActivity
 		tmpImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				if(nickname.getText().equals(""))
+				if(nickname.getText().toString().length()<2)
 					return;
 				
 				if(ServerNetworkController.getIPv4Address() == null) {
@@ -205,7 +205,7 @@ public class MainActivity extends FragmentActivity
 		tmpImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				if(nickname.getText().equals(""))
+				if(nickname.getText().toString().length()<2)
 					return;
 				
 				JoinDialog jd = new JoinDialog();
@@ -262,13 +262,57 @@ public class MainActivity extends FragmentActivity
 		@Override
 		public void onClick(View arg0) {
 			Log.d("my_size",nickname.getText().toString().length()+"");
+			//first if first boundary condition
+			//second and the third check the next boundary condition
 			if(nickname.getText().toString().length()<8)
 			{
-			nickname.append(String.valueOf(((AlphabetView)arg0).getCharacter()));
-		
+				if(nickname.getText().toString().length()>1)
+				{
+					Log.d("last elem:",nickname.getText().toString());
+					Log.d("ilast elem:",nickname.getText().toString());
+					if(nickname.getText().toString().toCharArray()[nickname.getText().toString().length()-1] == 'Ç' &&String.valueOf(((AlphabetView)arg0).getCharacter()).toCharArray()[0] == 'Ç')
+					{
+						//calling the appropriate dialog box
+					}
+					else
+					{	
+					
+						if(nickname.getText().toString().toCharArray()[nickname.getText().toString().length()-1]==nickname.getText().toString().toCharArray()[nickname.getText().toString().length()-2] &&( String.valueOf(((AlphabetView)arg0).getCharacter()).toCharArray()[0]==nickname.getText().toString().toCharArray()[nickname.getText().toString().length()-1]) )
+						{
+							//calling the dialog_Box
+						}
+						else
+						{
+							nickname.append(String.valueOf(((AlphabetView)arg0).getCharacter()));					
+						}
+					}
+				}
+				else
+				{
+					if(nickname.getText().toString().length()>0)
+					{
+					//checking another boundary condition for not having two "Â"
+						if(nickname.getText().toString().toCharArray()[nickname.getText().toString().length()-1] == 'Ç' &&String.valueOf(((AlphabetView)arg0).getCharacter()).toCharArray()[0] == 'Ç')
+						{
+							//calling the dialog box
+						}
+						else
+						{
+							nickname.append(String.valueOf(((AlphabetView)arg0).getCharacter()));
+						}
+					}
+					else
+					{
+						nickname.append(String.valueOf(((AlphabetView)arg0).getCharacter()));
+					}
+				}
 			}
-	
+			else
+			{
+				//calling the dialog box
+			}
 		}
+		
 	}
 	/**
 	 * Called when JoinDialog buttons clicked
