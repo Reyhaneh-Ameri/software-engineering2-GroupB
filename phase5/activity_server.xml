@@ -1,0 +1,218 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/b9">
+
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0"
+		android:gravity="right"
+		android:text="افرادی که به بازی ملحق شده اند" />
+	
+	<FrameLayout
+		android:layout_height="0dp"
+		android:layout_width="fill_parent"
+		android:layout_weight="1" >
+		<ImageView
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:background="@drawable/partition_backgrounds" 
+			android:alpha="0.3" />
+	
+		<ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" >
+		
+			<LinearLayout
+				android:id="@+id/UsersList"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:orientation="vertical" >
+				
+			<!-- <RelativeLayout 
+					android:id="@+id/User1Layout"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" >
+					<TextView
+						android:id="@+id/Username1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:layout_marginRight="1dp"
+						android:text="نفر اول" />
+					<ImageView
+						android:id="@+id/Avatar1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentLeft="true"
+						android:layout_centerVertical="true"
+						android:layout_marginLeft="1dp"
+						android:src="@drawable/ic_launcher" />
+				</RelativeLayout>-->
+				
+			</LinearLayout>
+		</ScrollView>
+	</FrameLayout>
+	
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0"
+		android:gravity="right"
+		android:text="تنظیمات بازی" />
+	
+	<FrameLayout
+		android:layout_height="0dp"
+		android:layout_width="fill_parent"
+		android:layout_weight="1" >
+		<ImageView
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:background="@drawable/partition_backgrounds" 
+			android:alpha="0.3" />
+		
+		<ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" >
+		
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" >
+				
+				<ToggleButton
+					android:id="@+id/Value1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_alignParentLeft="true"
+					android:background="@drawable/on_off_buttons"
+					android:textOff=""
+					android:textOn=""
+					android:layout_marginLeft="1dp" />
+				<TextView
+					android:id="@+id/Setting1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_alignBaseline="@id/Value1"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:text="کیبورد درهم" />
+				
+				<ToggleButton
+					android:id="@+id/Value2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Value1"
+					android:background="@drawable/on_off_buttons"
+					android:textOff=""
+                    android:textOn="" 
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp" />
+				<TextView
+					android:id="@+id/Setting2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting1"
+					android:layout_alignParentRight="true"
+					android:layout_alignBaseline="@id/Value2"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:text="خرید حرف" />
+			<Spinner 
+                    android:id="@+id/Value3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Value2"
+                    android:drawSelectorOnTop="true"
+                    android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp"
+					android:entries="@array/alphabets" />
+				
+				<TextView
+					android:id="@+id/Setting3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting2"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:layout_alignBaseline="@id/Value3"
+					android:text="حرف شروع را انتخاب کنید" />
+				<Spinner 
+					android:id="@+id/Value4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Value3"
+					android:drawSelectorOnTop="true"
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp"
+					android:entries="@array/alphabets" />
+				
+				
+				<TextView
+					android:id="@+id/Setting4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting3"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:layout_alignBaseline="@id/Value4"
+					android:text="حرف  پایان را انتخاب کنید" />
+				<Spinner
+					android:id="@+id/Value5"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Value4"
+					android:drawSelectorOnTop="true"
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp"
+					android:entries="@array/rounds" />
+				
+				<TextView
+					android:id="@+id/Setting5"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting4"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:layout_alignBaseline="@id/Value5"
+					android:text=" تعداد راند را انتخاب کنید" />
+			</RelativeLayout>
+		</ScrollView>
+	</FrameLayout>
+	
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0">
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:onClick="startGame"
+			android:background="#FF2107"
+			/>
+		<TextView
+			android:id="@+id/IP"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:text="IP goes here!" />
+	</RelativeLayout>
+</LinearLayout>
