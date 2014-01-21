@@ -1,0 +1,222 @@
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:scrollbarStyle="outsideOverlay"
+			 > 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" 
+    android:layout_gravity="right"
+    >
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t0"
+        android:layout_alignParentRight="true" 
+        android:text = "راهنمای بازی" 
+        android:textColor="#ffff0000"
+        
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t0"
+        android:id="@+id/t1"
+        android:layout_alignParentRight="true"
+        android:text="بازی اسم فامیل یک بازی چند نفره تحت شبکه میباشد و نسخه تک نفره در این بازی موجود نمیباشد.این بازی با تغییراتی و ایجاد مینی گیم در ان سعی در تغییر و جذابیت نسخه غیر کامپیوتری ان میباشد.
+در ابتدا بایستی نام کاربری خود را انتخاب کنید که این کار از طریق صفحه کلید تعبیه شده در صفحه اول ممکن میباشد. بمنظور ایجاد یک بازی شبکه ای یکی از شما کاربران بایستی host شوید و این کار از طریق انتخاب تصویر پایین صفحه در سمت چپ ممکن میباشد.سایر کاربران برای اضافه شدن به بازی بایستی تصویر سمت راستی گزینه host شدن را انتخاب کنند.کاربری که host  میشود توانایی انتخاب تنظیمات بازی را دارد و بقیه کاربران تنها تغییرات را مشاهده میکنند.پس از انتخاب گزینه شروع بازی بازی درچند دور شروع میشود و در بین دورها مینی گیمی برای افزایش امتیازها تعبیه شده است.برای تغییر هر فیلد کافی است بر روی ان کلیک کنید. در صورتی که فردی پایان دور را انتخاب کند و اشکالی در پاسخهایش باشد توسط سیستم تنبیه شده و از امتیاز وی کم میشود.در پایان هر دور امتیازات محاسبه و به کاربران نمایش داده میشود.هم چنین پس از اتمام بازی امتیازات کل تمام بازی کنندگان نمایش داده میشود. 
+        "
+         />
+   
+   <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#ffff0000"
+                android:id="@+id/t2"
+                 android:layout_below="@id/t1"
+                 />
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/y0"
+        android:layout_alignParentRight="true" 
+        android:text = "صفحه ی اول بازی" 
+        android:textColor="#ffff0000"
+         android:layout_below="@id/t2"
+         />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_below="@id/y0"
+         android:id="@+id/t3"
+         android:layout_alignParentRight="true"
+          android:layout_gravity = "right"
+          android:layout_marginTop="20dp"
+        android:text=" برای انتخاب نام خود ابتدا برروی برگه  کلیک کنید تا تمامی محتوی نام شما پاک شود.سپس با کلیک کردن بر روی حروف اسم مورد نظر خود را انتخاب کنید.به نکات زیر توجه کنید: نام شما بيش از 8 حرف نميتواند باشد.//حداکثر دو حرف یکسان میتوانند متوالی باشند.//دو  آ  پشت سرهم نمیتوانند قرار گیرند."
+         />  
+        
+         <TextView
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_below="@id/t3"
+         android:id="@+id/t4"
+         android:layout_alignParentRight="true"
+          android:layout_gravity = "right"
+          android:layout_marginTop="20dp"
+         android:text="در پایین صفحه 4 گزينه برای انتخاب وجود دارد. بترتیب از چپ به راست:
+•	host:همانطور که گفته شد یکی از کاربرها بایستی host شده و بقیه به او اضافه شوند.کاربری که قصد host شدن دارد باید این تصویر را انتخاب کند.پس از انتخاب این تصویر در صورت رعایت نکات فوق در اسم کاربر صفحه ای جدیدی باز میشود.
+•	ملحق شدن به بازی: سایر کاربران با کلیک کردن بر این تصویر و وارد کردن IP host میتوانند به host ملحق شده و به همان صفحه که host در آن است اضافه شود.
+•	help: بمنظور راهنمایی بازیکنندگان است.
+•	تنظیمات : با انتخاب گزینه تنظیمات با باز شدن صفحه جدید هر بازیکن میتواند عکسی را بعنوان آواتار خود انتخاب کند.امکان قطع و یا وصل کردن صدا ,لرزش و آهنگ نیز در این صفحه داده شده است.
+         "/>
+ <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#ffff0000"
+                android:id="@+id/t5"
+                 android:layout_below="@id/t4"
+                 />
+ <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t6"
+        android:layout_alignParentRight="true" 
+        android:text = "صفحه ی سرور" 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t5"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t6"
+        android:id="@+id/t7"
+        android:layout_alignParentRight="true"
+         android:text ="در این صفحه شما قادر به تنظیمات بازی میباشید و سایر بازیکنان که به بازی شما ملحق شده اند تنها میتوانند تغییرات را مشاهده کنند.قابلیت کیبورد درهم بازی را پیچیده کرده و جای حروف را بصورت تصادفی قرار میدهد .گزینه خرید حروف نیز امکان داد و ستد حروف بین نوبت ها را میدهد.شما میتوانید حروف آغاز و پایانی را انتخاب کنید. بو امکان انتخاب فیلدهای بازی هم وجود دارد . هم چینین گزینه تعداد روندها  نیز میزان روندهایی که میتوانید بازی کنید را مشخص میکند.با انتخای دکمه شروع بازی در گوشه سمت راست و پايين صفحه شما و سایر کابر ها وارد بازی میشوید."
+        />
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t8"
+        android:layout_alignParentRight="true" 
+        android:text = "صفحه ی بازی" 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t7"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t8"
+        android:id="@+id/t9"
+        android:layout_alignParentRight="true"
+         android:text ="در این صفحه بخش اصلی بازی اجرا میشود.به نکات زیر توجه کنید:
+•	با کلیک بر روی هر قسمت زیر جدول بطور مثال زیر اسم يا زیر رنگ شما ميتوانید محتوای آنرا تغییر دهید
+•	پس از انتخاب بخش مورد نظر با انتخاب بازگشت یک حرف پاک میشود و با حروف و هم چنین دکمه فاصله کلمه مورد نظر خود را انتخاب کنید.
+•	در صورت انتخاب گزینه کم اوردم توسط تمامی بازیکنان این نوبت به پایان میرسد.
+•	در صورت انتخاب گزینه اتمام بازی روند به پایان میرسد.البته اگر جوابها غلط باشد امتیاز منفی به بازیکن مورد نظر در نظر گرفته میشود.
+•	اگر گزینه خرید حروف در شروع بازی روشن شده باشد میتوانید از این گزینه برای خرید حروف به ازای امتیازهای کنونی تان استفاده کنید.
+         "
+        />
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t10"
+        android:layout_alignParentRight="true" 
+        android:text = "صفحه نتایج" 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t9"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t10"
+        android:id="@+id/t11"
+        android:layout_alignParentRight="true"
+        android:text="در این صفحه نتایج بازی بازی شما درج شده است.در صورت درست بودن پس زمینه آن سبز در غیر اینصورت قرمز میشود.در این صفحه نام تمامی کاربران بعلاوه جوابهایشان نوشته شده است .  
+        " />
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t12"
+        android:layout_alignParentRight="true" 
+        android:text = "طریقه ی امتیاز دهی" 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t11"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t12"
+        android:id="@+id/t13"
+        android:layout_alignParentRight="true"
+        android:text = " فیلدهای پر شده با پایگاه داده بازی مقایسه شده ، در صورتی که در پایگاه داده فیلد موجود یافت  و فیلد متمایز از سایر بازیکنان باشد امتیاز کامل ( 20 امتیاز ) به بازیکن داده خواهد شد و اگر با بازیکنان دیگر یکسان باشد امتیاز بین بازیکنان تقسیم خواهد شد  .اگر در پایگاه داده یافت نشد  به عنوان فیلد مبهم از بقیه بازیکنان پرسیده میشود و در صورتی که مورد توافق حداقل نصف بیشتر باشه امتیاز کامل به وی تعلق میگیرد و در غیر این صورت هیچ امتیازی نخواهد گرفت . "
+ />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t14"
+        android:layout_alignParentRight="true" 
+        android:text = "صفحه ی امتیازات " 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t13"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t14"
+        android:id="@+id/t15"
+        android:layout_alignParentRight="true"
+        android:text ="در پایان راندهای بازی ، افراد به ترتیب امتیازشان نمایش داده خواهد شد . " />
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:id="@+id/t16"
+        android:layout_alignParentRight="true" 
+        android:text = "مینی گیم بازی " 
+        android:textColor="#ffff0000"
+        android:layout_below="@id/t15"
+         />
+          
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "right"
+        android:layout_below="@id/t16"
+        android:id="@+id/t17"
+        android:layout_alignParentRight="true"
+        android:text ="در پایان هر راند بازیکنان به این صفحه هدایت میشوند .  چند تا عکس وجود دارد در صورتی که روی سه تا از عکس های مشابه پشت سرهم کلیک شود بازیکن برنده می شود . با برنده شدن در مینی گیم کمبود حروف جبران خواهد شد . "
+   />
+</RelativeLayout>
+</ScrollView>
