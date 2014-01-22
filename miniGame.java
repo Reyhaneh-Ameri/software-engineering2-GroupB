@@ -184,5 +184,39 @@ public class MainActivity extends FragmentActivity
 			}
 		}
 		tv.setText("");
+		}
+
+	public void start(char[] chn) {
+		ArrayList<Character> ch=new ArrayList<Character>();
+		for(int u=0;u<chn.length;u++) ch.add(chn[u]); 
 		
+		tLayout1=(TableLayout) findViewById(R.id.maintablelayout);
+		TableRow tr1=new TableRow(this);
+		tr1.addView(tv);
+		tLayout1.addView(tr1);
+		tr1.addView(b1);
+		
+		tLayout2=new TableLayout(this);
+		int j = 0;
+		for(int z=0;z<ch.size();z++){
+			for(int o=0;o<32;o++){
+				if(AlphabetView.AlphabetChars[o]==chn[z]) j=o; 
+			}
+			
+			tmpImages.add(AlphabetView.AlphabetImages[j]);
+			tmpCharacters.add(AlphabetView.AlphabetChars[j]);
+			
+		}
+	
+		
+	
+		int row=tmpImages.size()/8+1;
+		trs=new ArrayList<TableRow>();
+		
+		for(int i=0;i<row;i++){
+			TableRow r=new TableRow(this);
+			r.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
+			trs.add(r);
+		}
+		int count=0;
 	}
