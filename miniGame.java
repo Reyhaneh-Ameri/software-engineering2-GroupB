@@ -102,4 +102,63 @@ public class MainActivity extends FragmentActivity
 		}
 		return false;		
 	}
+	
+	public boolean addPair(pair p) {					//ro har harfi k click mishe in tabe farakhani mishe
+		
+		for(int z=0;z<32;z++){
+			if(AlphabetView.AlphabetChars[z]==p.c){
+																			//index e harfe click shode ro peyda mikone
+				bb=z;
+				
+			}
+		}
+
+		if(((startId-bb==1) ||(bb-endId==1) || (startId==bb) || (bb==endId))&& !(isInCurrentpairs(p)) && !(isInWinnedpairs(p))){
+			pairs.add(p);
+			
+			if((startId-bb==1 || bb==startId)){
+				startChar=p.c;											//ba start end moqayese mikone tebeqe qavanini k gofte bodi neveshtam
+				
+				startId=bb;
+			}
+			if((bb-endId==1 || bb==endId)){
+				endChar=p.c;
+				
+				endId=bb;
+			}
+			
+			b1.setOnClickListener(new OnClickListener() {						//in button ham k bara ferestdane 4 ta harfe doroste zade shode b server neveshtam 
+				
+				@Override
+				public void onClick(View arg0) {
+					
+					ArrayList<pair> p2=new ArrayList<pair>();
+					
+					ArrayList<Boolean> p3=new ArrayList<Boolean>();    //inja karaye server ro shabih sazi kardam
+					p3.add(false);
+					p3.add(false);								//inja alaki goftam k har dafe az 4 ta pair k az server miad faghat sevvomi ghabele ghabole
+					p3.add(true);								//va in khatta ro baade test pak kon damet garm
+					p3.add(false);
+					                                             // inja  bayad pairs ro b server befrestim , farhad nemishe pairs ro to khode kelas save koni
+																// chon activity hey az bein mire doros mishe bara hamin sari arraylist khali mishe
+																// bara hamin natonestam ye func benvisam k pair ro az oon begiri bara hamin func server ro inja faakhani kon va pair ro b in ravesh b server enteghal bede
+					win(pairs, p2, p3);							//in khatam baade test bayad pak she
+					
+					while(pairs.size()>0){						//inam bara inke pair ro har marhale bayad khali mikardam
+						pairs.remove(0);
+						
+					}
+					
+				}
+			});
+			
+			
+			
+			
+			return true;
+		}
+
+		return false;
+	
+	}
 	}
