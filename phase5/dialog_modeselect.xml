@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0"
+		android:gravity="right"
+		android:text="تنظیمات بازی" 
+		android:textColor="#0000FF"
+		/>
+    <ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" >
+		
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				 >
+				
+				<ToggleButton
+					android:id="@+id/Value1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentTop="true"
+					android:layout_alignParentLeft="true"
+					android:background="@drawable/on_off_buttons"
+				    android:textOff=""
+                    android:textOn="" 
+					android:layout_marginLeft="1dp" />
+				<TextView
+					android:id="@+id/Setting1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_alignBaseline="@id/Value1"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:textColor="@android:color/black"
+					android:text="کیبورد درهم" />
+				
+				
+				<TextView
+					android:id="@+id/Value3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Value1"
+					android:background="#FF0000"
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp" />
+				<TextView
+					android:id="@+id/Setting3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting1"
+					android:layout_alignParentRight="true"
+					android:layout_alignBaseline="@id/Value3"
+					android:layout_marginRight="1dp"
+					android:gravity="right"
+					android:textColor="@android:color/black"
+					android:text="حرف شروع" />
+				<TextView
+					android:id="@+id/Value4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Value3"
+					android:background="#FF0000"
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="1dp" />
+				<TextView
+					android:id="@+id/Setting4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/Setting3"
+					android:layout_alignParentRight="true"
+					android:layout_alignBaseline="@id/Value4"
+					android:layout_marginRight="1dp"
+					android:textColor="@android:color/black"
+					android:gravity="right"
+					android:text="حرف پایان" />
+				
+				
+				
+			</RelativeLayout>
+		</ScrollView>
+    
+
+</LinearLayout>

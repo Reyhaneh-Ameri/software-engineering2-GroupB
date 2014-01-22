@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fandogh</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="alphabets">
+		<item>ا</item>
+		<item>ب</item>
+		<item>پ</item>
+		<item>ت</item>
+		<item>ث</item>
+		<item>ج</item>
+		<item>چ</item>
+		<item>ح</item>
+		<item>خ</item>
+	</string-array>
+	<string-array name="rounds">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+	</string-array>
+
+</resources>

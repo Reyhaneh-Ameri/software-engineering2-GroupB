@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/b9"
+    tools:context=".Settings" >
+
+    <TextView
+        android:id="@+id/vibrationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:text="لرزش"
+        android:textSize="20sp" 
+        android:textColor="#0000FF"/>
+    
+    <TextView
+        android:id="@+id/musicText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/vibrationText"
+        android:layout_marginTop="20dp"
+        android:text="آهنگ"
+        android:textSize="20sp"
+        android:textColor="#0000FF" />
+
+    <TextView
+        android:id="@+id/soundText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/musicText"
+        android:layout_marginTop="20dp"
+        android:text="صدا"
+        android:textSize="20sp" 
+        android:textColor="#0000FF"/>
+
+    <ToggleButton
+        android:id="@+id/togSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/soundText"
+        android:gravity="center"
+        android:textOff="خاموش"
+        android:textOn="روشن" 
+        android:background="@drawable/on_off_buttons"/>
+
+    <ToggleButton
+        android:id="@+id/togVibra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/vibrationText"
+        android:gravity="center"
+        android:textOff="خاموش"
+        android:textOn="روشن"
+        android:background="@drawable/on_off_buttons" />
+
+    <ToggleButton
+        android:id="@+id/togMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBaseline="@id/musicText"
+        android:gravity="center"
+        android:textOff="خاموش"
+        android:textOn="روشن"
+        android:background="@drawable/on_off_buttons" />
+
+    <ImageView
+        android:id="@+id/showAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/avatar" />
+
+    <Button
+        android:id="@+id/bbb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showAvatar"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="21dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/o2"
+        android:gravity="center"
+        android:text="انتخاب عکس" />
+    
+</RelativeLayout>
