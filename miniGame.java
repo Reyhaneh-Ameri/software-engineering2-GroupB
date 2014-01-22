@@ -161,4 +161,28 @@ public class MainActivity extends FragmentActivity
 		return false;
 	
 	}
+	public void win(ArrayList<pair> myPairs,ArrayList<pair> allWinnedPairs,ArrayList<Boolean> pairsState) {      //********
+		
+		
+		TableRow tr2;
+		ImageView im;
+		for (int i = 0; i < myPairs.size(); i++) {
+			
+			if(pairsState.get(i)==false){
+				
+				for (int j = 0; j <32; j++) {
+					if(AlphabetView.AlphabetChars[j]==myPairs.get(i).c){
+						tr2=trs.get(myPairs.get(i).x);
+						((ImageView) tr2.getChildAt(myPairs.get(i).y)).setImageResource(R.drawable.paper2);		//age harf ghabele ghabol nabod dobare to jadval bemone
+						
+					}
+				}
+	
+			}else{
+				winnedChar.add(myPairs.get(i));						//age harfe ghabele ghabol bood b arayeye harfaye borde ezafe she
+				tv3.setText(tv3.getText()+" "+myPairs.get(i).c);
+			}
+		}
+		tv.setText("");
+		
 	}
