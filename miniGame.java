@@ -84,4 +84,22 @@ public class MainActivity extends FragmentActivity
 		start(qw);				// *****
 		
 	}
+	public final boolean isInCurrentpairs(pair p) {
+		
+		for (int i = 0; i < pairs.size(); i++) {
+			if((pairs.get(i).c==p.c)&&(pairs.get(i).x==p.x)&&(pairs.get(i).y==p.y)){
+				return true;
+			}
+		}
+		return false;		
+	}
+	public final boolean isInWinnedpairs(pair p) {
+		Log.d("cvcvcvc",winnedChar.size()+"");
+		for (int i = 0; i < winnedChar.size(); i++) {
+			if((winnedChar.get(i).c==p.c)&&(winnedChar.get(i).x==p.x)&&(winnedChar.get(i).y==p.y)){
+				return true;
+			}
+		}
+		return false;		
+	}
 	}
