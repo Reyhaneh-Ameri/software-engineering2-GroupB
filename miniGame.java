@@ -219,4 +219,71 @@ public class MainActivity extends FragmentActivity
 			trs.add(r);
 		}
 		int count=0;
+		while(tmpImages.size()>0){
+
+				try {
+					
+					final ImageView im=new ImageView(this);
+				
+					final int yy=tmpImages.remove(0);
+					im.setImageResource(R.drawable.paper2);
+					//im.setImageResource(R.drawable.m12);
+					final char c=tmpCharacters.remove(0);
+					final int crow=count/8;
+					final int ccol=count%8;
+					trs.get(crow).addView(im);
+					count++;
+					
+					im.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							
+							pair pp=new pair(c,crow,ccol);
+							CharSequence hh=tv.getText();
+							
+							if(hh.length()==0){
+								startChar=c;
+								endChar=c;
+								
+								for(int z=0;z<32;z++){
+									if(AlphabetView.AlphabetChars[z]==c){
+																									//index e harfe click shode ro peyda mikone
+										startId=z;
+										endId=z;
+										
+									}
+								}
+								
+							}
+							
+							if(addPair(pp)){
+								im.setImageResource(R.drawable.q1);	
+								tv.append(String.valueOf(c));
+							}else{
+								if(isInCurrentpairs(pp) ||isInWinnedpairs(pp) ){
+									im.setImageResource(R.drawable.q1);	
+								}else{
+									im.setImageResource(yy);
+									//tv.setText("");
+									im.postDelayed(new Runnable() {
+										
+										@Override
+										public void run() {
+											
+											im.setImageResource(R.drawable.paper2);
+										}
+									},1000);
+									
+								}
+								
+							}
+				
+						}				
+					});
+	
+				} catch (Exception e) {
+					break;
+				}
+		}
 	}
