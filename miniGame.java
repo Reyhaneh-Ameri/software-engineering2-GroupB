@@ -286,4 +286,16 @@ public class MainActivity extends FragmentActivity
 					break;
 				}
 		}
+		for(int gh=0;gh<trs.size();gh++){
+			tLayout2.addView(trs.get(gh));
+		}
+		
+		tLayout1.addView(tLayout2)	;
+		
+		TableRow tr3=new TableRow(this);
+		tr3.addView(tv2);
+		tr3.addView(tv3);
+		tLayout1.addView(tr3);
+	
+	}
 	}
